@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.androidvideopicker.data.entity.VideoAlbumNameRvItem" />
+
+        <variable
+            name="bottomSheetDialogFragment"
+            type="com.example.androidvideopicker.ui.bottomSheet.VideoAlbumDialogFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentsConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{(v) -> item.albumNameListener.onAlbumItemClick(v , item.videoAlbumName , bottomSheetDialogFragment)}"
+        >
+
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/margin_big"
+            android:paddingVertical="@dimen/margin_big"
+            android:singleLine="true"
+            android:text="@{item.videoAlbumName.albumName}"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="@dimen/font_size_mid"
+            tools:text="ContentsNameContentsNameContentsNameContentsNameContentsNameContentsName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

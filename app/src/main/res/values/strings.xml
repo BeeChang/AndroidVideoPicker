@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidVideoPicker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <color name="lineBackground">#84A0A0A0</color>
+
+</resources>

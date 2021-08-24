@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.example.androidvideopicker.data.entity.VideoRvItem" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v) -> item.onVideoItemClickListener.onItemClick(v,item,position)}"
+        >
+
+        <View
+            android:id="@+id/selectedView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="1dp"
+            android:layout_marginVertical="2dp"
+            android:scaleType="fitXY"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="@{item.isSelected ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toTopOf="parent"
+            android:translationZ="10dp"
+            android:background="#AAFFFFFF"
+            />
+
+
+        <!--    동영상 길이 나타내는 텍스트뷰 , 데이터 없을경우를 대비해서 텍스트를 비워둠-->
+        <TextView
+            android:id="@+id/durationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_very_small"
+            android:layout_marginRight="@dimen/margin_very_small"
+            android:text="@{item.videoMedia.duration}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_mid_small"
+            android:translationZ="5dp"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="00:00"
+            />
+
+        <ImageView
+            android:id="@+id/selectImgView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="1dp"
+            android:layout_marginVertical="2dp"
+            android:scaleType="fitXY"
+            app:glideLoadImage="@{item.videoMedia.contentUri}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
